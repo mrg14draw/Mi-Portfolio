@@ -319,8 +319,6 @@
             border: 1px solid rgba(74, 95, 193, 0.2);
             backdrop-filter: blur(10px);
         }
-
-
         
         .project-card:hover {
             transform: translateY(-15px);
@@ -520,6 +518,161 @@
         .carousel-dot.active {
             background: linear-gradient(90deg, var(--nebula-blue), var(--comet-purple));
             transform: scale(1.2);
+        }
+        
+        /* Explore the Universe Section */
+        .explore-universe {
+            padding: 100px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            background: rgba(58, 63, 94, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(74, 95, 193, 0.2);
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .explore-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .explore-image-container {
+            flex: 0 0 400px;
+            position: relative;
+        }
+        
+        .explore-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, var(--nebula-blue), var(--comet-purple), var(--star-yellow));
+            background-size: 300% 300%;
+            animation: gradientBorder 4s ease infinite;
+            padding: 5px;
+            perspective: 1000px;
+        }
+        
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        
+        .explore-image:hover .flip-card {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--crater-gray);
+        }
+        
+        .flip-card-front img, .flip-card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .explore-image:hover .flip-icon {
+            background: linear-gradient(90deg, var(--nebula-blue), var(--comet-purple));
+        }
+        
+        .explore-frame {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px solid rgba(255, 235, 59, 0.3);
+            border-radius: 25px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .explore-decoration {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            z-index: 2;
+        }
+        
+        .explore-dec-1 {
+            top: -20px;
+            right: -20px;
+            background: linear-gradient(45deg, var(--nebula-blue), var(--comet-purple));
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.7;
+        }
+        
+        .explore-dec-2 {
+            bottom: -20px;
+            left: -20px;
+            background: linear-gradient(45deg, var(--star-yellow), #ff9800);
+            border-radius: 50%;
+            filter: blur(15px);
+            opacity: 0.5;
+        }
+        
+        .explore-universe h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--starlight), var(--nebula-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .explore-universe p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #b8bccc;
+            max-width: 700px;
         }
         
         /* Contact */
@@ -798,22 +951,22 @@
         
         /* Responsive */
         @media (max-width: 1100px) {
-            .hero {
+            .hero, .explore-universe {
                 flex-direction: column;
                 text-align: center;
                 gap: 40px;
             }
             
-            .hero-content {
+            .hero-content, .explore-content {
                 max-width: 100%;
             }
             
-            .hero-image-container {
+            .hero-image-container, .explore-image-container {
                 flex: 0 0 300px;
                 order: -1;
             }
             
-            .hero h1 {
+            .hero h1, .explore-universe h2 {
                 font-size: 3rem;
             }
             
@@ -823,7 +976,7 @@
         }
         
         @media (max-width: 992px) {
-            .hero h1 {
+            .hero h1, .explore-universe h2 {
                 font-size: 2.8rem;
             }
             
@@ -872,11 +1025,11 @@
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
+            .hero h1, .explore-universe h2 {
                 font-size: 2.3rem;
             }
             
-            .hero p {
+            .hero p, .explore-universe p {
                 font-size: 1.1rem;
             }
             
@@ -904,11 +1057,11 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero-image-container {
+            .hero-image-container, .explore-image-container {
                 flex: 0 0 250px;
             }
             
-            .hero-image {
+            .hero-image, .explore-image {
                 height: 350px;
             }
             
@@ -925,10 +1078,19 @@
                 height: 35px;
                 font-size: 1rem;
             }
+            
+            .explore-universe {
+                padding: 60px 5%;
+                gap: 40px;
+            }
+            
+            .explore-image {
+                height: 300px;
+            }
         }
         
         @media (max-width: 480px) {
-            .hero h1 {
+            .hero h1, .explore-universe h2 {
                 font-size: 2rem;
             }
             
@@ -944,11 +1106,11 @@
                 height: 200px;
             }
             
-            .hero-image-container {
+            .hero-image-container, .explore-image-container {
                 flex: 0 0 220px;
             }
             
-            .hero-image {
+            .hero-image, .explore-image {
                 height: 300px;
             }
             
@@ -964,6 +1126,15 @@
                 width: 30px;
                 height: 30px;
                 font-size: 0.9rem;
+            }
+            
+            .explore-universe {
+                padding: 50px 20px;
+                gap: 30px;
+            }
+            
+            .explore-image {
+                height: 250px;
             }
         }
     </style>
@@ -998,7 +1169,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Explora el Universo de la <span class="highlight"> Creatividad.</span></h1>
+            <h1>Explora el Universo de la <span class="highlight">Creatividad.</span></h1>
             <p>!Hola¡,Soy <span class="highlight">María Alonso</span>.Soy una estudiante de diseño con muchas ganas de crear cosas bonitas y significativas.
 		Desde que descubrí el mundo del diseño, me apasiona cómo una buena combinación de colores, formas y tipografía puede contar historias y transmitir 	emociones.
 
@@ -1021,66 +1192,66 @@ Aún estoy en proceso de aprender (y eso me encanta), pero cada nuevo proyecto e
         </div>
     </section>
     
-    <!-- Projects Section - CÓDIGO CORREGIDO -->
-<section id="projects">
-    <h2 class="section-title">Mis Proyectos.</h2>
-    <div class="projects-grid">
-        <div class="project-card">
-            <div class="project-img">
-                <!-- Añade aquí tu imagen principal para Class Projects -->
-                <img src="imagenes/fondo.png" alt="Class Projects">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Proyectos de empresa</h3>
-                <p class="project-description">Proyectos creados para algunas empresas durante las prácticas.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Blender</span>
-                    <span class="tech-tag">Premiere</span>
-                    <span class="tech-tag">Drawing</span>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Mis proyectos.</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- Añade aquí tu imagen principal para Class Projects -->
+                    <img src="imagenes/fondo.png" alt="Class Projects">
                 </div>
-                <button class="btn view-project-btn" data-project="company">Ver proyectos</button>
+                <div class="project-content">
+                    <h3 class="project-title">Proyectos de empresas.</h3>
+                    <p class="project-description">Proyectos creados para empresas.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Blender</span>
+                        <span class="tech-tag">Premiere</span>
+                        <span class="tech-tag">Drawing</span>
+                    </div>
+                    <button class="btn view-project-btn" data-project="company">Ver proyectos.</button>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- Añade aquí tu imagen principal para More Class Projects -->
+                    <img src="imagenes/fondo.png" alt="Video Projects">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Class Projects</h3>
+                    <p class="project-description">Estos son algunos de los proyectos de clase.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Photoshop</span>
+                        <span class="tech-tag">Blender</span>
+                    </div>
+                    <button class="btn view-project-btn" data-project="moon">Ver proyectos.</button>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="imagenes/fondo.png" alt="Video Projects">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Más proyectos de clase.</h3>
+                    <p class="project-description">Estos son algunos de los videos de trabajos seleccionados de clase.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Photoshop</span>
+                        <span class="tech-tag">Premiere</span>
+                        <span class="tech-tag">Blender</span>
+                    </div>
+                    <button class="btn view-project-btn" data-project="cosmic">ver proyectos.</button>
+                </div>
             </div>
         </div>
-        
-        <div class="project-card">
-            <div class="project-img">
-                <!-- Añade aquí tu imagen principal para More Class Projects -->
-                <img src="imagenes/fondo.png" alt="Video Projects">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Proyectos de clase</h3>
-                <p class="project-description">Estos son algunos de los proyectos creados en clase.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Photoshop</span>
-                    <span class="tech-tag">Blender</span>
-                </div>
-                <button class="btn view-project-btn" data-project="moon">Ver proyectos</button>
-            </div>
-        </div>
-        
-        <div class="project-card">
-            <div class="project-img">
-                <img src="imagenes/fondo.png" alt="Video Projects">
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">Más proyectos de clase</h3>
-                <p class="project-description">Estos son algunos de los videos creados en clase.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Photoshop</span>
-                    <span class="tech-tag">Premiere</span>
-                    <span class="tech-tag">Blender</span>
-                </div>
-                <button class="btn view-project-btn" data-project="cosmic">Ver proyectos</button>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
     
     <!-- Gallery Modal -->
     <div class="gallery-modal" id="galleryModal">
         <div class="modal-content">
             <button class="close-modal" id="closeModal">&times;</button>
-            <h2 class="modal-title" id="modalTitle">Galeria de proyectos</h2>
+            <h2 class="modal-title" id="modalTitle">Galería de proyectos.</h2>
             <p class="modal-description" id="modalDescription">Project details and gallery</p>
             <div class="gallery-container" id="galleryContainer">
                 <!-- Gallery items will be inserted here by JavaScript -->
@@ -1098,7 +1269,7 @@ Aún estoy en proceso de aprender (y eso me encanta), pero cada nuevo proyecto e
     
     <!-- Skills Section - Carrusel -->
     <section id="skills">
-        <h2 class="section-title">Mis Skills</h2>
+        <h2 class="section-title">My Skills</h2>
         <div class="skills-carousel-container">
             <button class="carousel-nav carousel-prev" id="carouselPrev">
                 <i class="fas fa-chevron-left"></i>
@@ -1120,12 +1291,45 @@ Aún estoy en proceso de aprender (y eso me encanta), pero cada nuevo proyecto e
         </div>
     </section>
     
+    <!-- GAMEJAM Section -->
+    <section class="explore-universe" id="explore">
+        <div class="explore-content">
+            <h2>GAME JAM ENTHARIEL GAMES</h2>
+            <p>Junto a mis compañeros de grupo
+             <span class="highlight">"Lizard Games"</span> tuvimos la oportunidad de crear un Videojuego para la empresa "Entrariel Games" ,donde pudimos aprender un montón <span class="highlight">y ganar la competición con nuestro juego llamado "EXILED".</span>Dejo el enlace por aquí para que le echéis un vistazo <span class="highlight">https://itch.io/jam/game-jam-enthariel-games-2025/rate/4131164</span>.</p>
+            
+        </div>
+        
+        <div class="explore-image-container">
+            <div class="explore-image">
+                <div class="flip-card">
+                    <div class="flip-card-front">
+                        <!-- Primera imagen - Frontal -->
+                        <img src="imagenes/gamejam.jpg" 
+                             alt="Game Jam Enthariel Games - Front">
+                    </div>
+                    <div class="flip-card-back">
+                        <!-- Segunda imagen - Trasera -->
+                        <img src="imagenes/exiled.png" 
+                             alt="Game Jam Enthariel Games - Back">
+                    </div>
+                </div>
+                <div class="flip-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="explore-frame"></div>
+                <div class="explore-decoration explore-dec-1"></div>
+                <div class="explore-decoration explore-dec-2"></div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Contactame!</h2>
         <div class="contact-container">
             <div class="contact-info">
-                <h3>Conectemos con el universo digital!</h3>
+                <h3>Conectemos con el Universo Digital</h3>
                 <div class="contact-item">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
@@ -1149,8 +1353,8 @@ Aún estoy en proceso de aprender (y eso me encanta), pero cada nuevo proyecto e
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div>
-                        <h4>Localización</h4>
-                        <p>Dos Hermanas,Sevilla</p>
+                        <h4>Localidad</h4>
+                        <p>Dos Hermanas,Seville</p>
                     </div>
                 </div>
             </div>
@@ -1159,9 +1363,9 @@ Aún estoy en proceso de aprender (y eso me encanta), pero cada nuevo proyecto e
                 <form id="contactForm">
                     <input type="text" placeholder="Nombre" required>
                     <input type="email" placeholder="Email" required>
-                    <input type="text" placeholder="Motivo" required>
+                    <input type="text" placeholder="Contexto" required>
                     <textarea rows="5" placeholder="Mensaje" required></textarea>
-                    <button type="submit" class="btn">Mandar Mensaje <i class="fas fa-paper-plane"></i></button>
+                    <button type="submit" class="btn">Mandar mensaje <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
@@ -1236,8 +1440,8 @@ Aún estoy en proceso de aprender (y eso me encanta), pero cada nuevo proyecto e
         // Project data with images, GIFs and videos - CORREGIDO
         const projectData = {
             company: {
-                title: "Proyectos para empresas.",
-                description: "Estos son algunos de los proyectos creados para empresas.",
+                title: "Company Projects",
+                description: "Estos son algunos de los proyectos creados para empresas durante las prácticas.",
                 media: [
                     { type: "image", url: "imagenes/portada juego(final).png", title: "Enthariel Games" },
                     { type: "image", url: "imagenes/portada3.0(fondo amarillo).png", title: "Enthariel Games" },
@@ -1252,8 +1456,8 @@ Aún estoy en proceso de aprender (y eso me encanta), pero cada nuevo proyecto e
                 ]
             },
             moon: {
-                title: "Proyectos de clase",
-                description: "Algunos proyectos seleccionados de clase.",
+                title: "Class Projects",
+                description: "Estos son algunos de los proyectos de clase.",
                 media: [
                     { type: "image", url: "imagenes/Alonso_Gamero_Maria_BEBE GOKU FOTO.png", title: "Class projects" },
                     { type: "image", url: "imagenes/Alonso_Gamero_Maria_Foto Lowpoly.png", title: "Class projects" },
@@ -1270,8 +1474,8 @@ Aún estoy en proceso de aprender (y eso me encanta), pero cada nuevo proyecto e
                 ]
             },
             cosmic: {
-                title: "Más proyectos de clase",
-                description: "Algunos de los videos seleccionados realizados en clase.",
+                title: "More Class Projects",
+                description: "Estos son algunos de los videos de trabajos seleccionados de clase.",
                 media: [
                    { type: "youtube", url: "https://youtu.be/7Z2A5P2dkWA?si=_mnDTMQA2NUBAFVP", thumbnail: "imagenes/portada niño.png", title: "Mytto" },
                     { type: "youtube", url: "https://youtu.be/P_kI44YpHU4?si=i0L5B3xqNE236TMe", thumbnail: "imagenes/portada cirucuito pelota.png", title: "Mytto" },
@@ -1923,8 +2127,4 @@ function closeFullscreenView() {
 
     </script>
 </body>
-
 </html>
-
-
-
